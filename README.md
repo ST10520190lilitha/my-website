@@ -22,13 +22,21 @@ My main goal for the website is to make the business owners life a little easier
 
 The homepage will have the name of the business, logo, the homepage will  tell us a little about the business and wat the business sells 
 
-About us 
-
-About us 
+### About us 
 It will talk about this specific business owner in forever living since there are many forever living businesses. 
 
-Contact page  
+### Contact page  
 There will be the contact details for the business owner that sells these products 
 
-Products  
+### Products  
 This will have different categories for different products and they will be sectioned in their benefits like for example the skincare will be on its own 
+
+### Enquiry 
+
+This will have a block that will allow people to ask questions regarding the produces that are being sold by the owner 
+
+### Timeline and milestones  
+Date	Type of Submission 
+14 August 2026	Part 1
+8 September 2026	Part 2
+
