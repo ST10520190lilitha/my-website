@@ -37,6 +37,18 @@ This will have a block that will allow people to ask questions regarding the pro
 
 ### Timeline and milestones  
 Date	Type of Submission 
-14 August 2026	Part 1
-8 September 2026	Part 2
+
+14 August 2026	Part 1 
+
+8 September 2026	Part 2 
+
+# Part 1 HTML development
+
+Part one mostly focuses on the structure and html coded 
+
+### Homepage 
+
+
+
+
 
