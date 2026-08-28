@@ -1,2 +1,54 @@
 # MyWebsite
 
+Lilitha Jubati 
+
+ST10520190 
+
+Web development 
+
+WEDE5020 
+
+## Project Overview 
+
+I have created a website Forever Living. The website featuring a yellow, brown, and green colour scheme aimed at helping a local business, the main goal of the for the website is to  make it easier for her to find her products when she wants to show or advertise the benefits of the item without having to sift through her gallery 
+
+## Website Goal and objectives 
+
+My main goal for the website is to make the business owners life a little easier because when someone is asking about the benefits or asking the price the owner needs to sift through pictures in her gallery or a PDF which she cant search for the specific she wants which is time consuming for her 
+
+## Key features 
+
+### Homepage 
+
+The homepage will have the name of the business, logo, the homepage will  tell us a little about the business and wat the business sells 
+
+### About us 
+It will talk about this specific business owner in forever living since there are many forever living businesses. 
+
+### Contact page  
+There will be the contact details for the business owner that sells these products 
+
+### Products  
+This will have different categories for different products and they will be sectioned in their benefits like for example the skincare will be on its own 
+
+### Enquiry 
+
+This will have a block that will allow people to ask questions regarding the produces that are being sold by the owner 
+
+### Timeline and milestones  
+Date	Type of Submission 
+
+14 August 2026	Part 1 
+
+8 September 2026	Part 2 
+
+# Part 1 HTML development
+
+Part one mostly focuses on the structure and html coded 
+
+### Homepage 
+
+
+
+
+
