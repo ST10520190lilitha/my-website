@@ -42,11 +42,6 @@ Date	Type of Submission
 
 8 September 2026	Part 2 
 
-# Part 1 HTML development
-
-Part one mostly focuses on the structure and html coded 
-
-### Homepage 
 
 
 
