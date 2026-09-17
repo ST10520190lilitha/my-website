@@ -1,4 +1,8 @@
-/* Everything lives in this stylesheet — no external CSS or JS. */
+/* =========================================================
+   Forever Living by Sindi Jubati — shared site stylesheet
+   Used by: index.html, Pages/about.html, Pages/contact.html,
+            Pages/enquiry.html, Pages/products.html
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -23,10 +27,18 @@ header {
 }
 
 header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #FBF8F3;
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 0.5px;
+}
+
+header .logo img {
+    height: 36px;
+    width: auto;
 }
 
 nav a {
@@ -78,6 +90,10 @@ main {
     padding: 50px 24px 70px 24px;
 }
 
+main.wide {
+    max-width: 1000px;
+}
+
 section {
     margin-bottom: 50px;
 }
@@ -105,15 +121,43 @@ section p {
     margin: 45px auto;
 }
 
+/* Intro / highlighted text box (used on the home page) */
+.intro-box {
+    background-color: #EFE7D6;
+    border: 1px solid #DDD2B8;
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+}
+
+.intro-box p {
+    margin-bottom: 0;
+}
+
+.intro-box p + p {
+    margin-top: 16px;
+}
+
+/* Pull-quote / callout box (used on the about page) */
+.callout {
+    background-color: #EFE7D6;
+    border-left: 4px solid #C08A3E;
+    border-radius: 4px;
+    padding: 20px 26px;
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    font-style: italic;
+    color: #2F4B3C;
+}
+
 /* Detail list (contact + office) styled as cards, not bare bullets */
 .detail-list {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: grid;
     gap: 14px;
     max-width: 520px;
-    margin: 0 auto;
 }
 
 .detail-list li {
@@ -157,6 +201,160 @@ section p {
     border: 0;
 }
 
+/* ---------- Forms (Enquiry page) ---------- */
+.enquiry-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #EFE7D6;
+    border: 1px solid #DDD2B8;
+    border-radius: 4px;
+    padding: 32px;
+}
+
+.enquiry-form label {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #2F4B3C;
+    margin-bottom: 6px;
+}
+
+.enquiry-form input[type="text"],
+.enquiry-form input[type="email"],
+.enquiry-form select,
+.enquiry-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD2B8;
+    border-radius: 3px;
+    background-color: #FBF8F3;
+    color: #2A2118;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+}
+
+.enquiry-form textarea {
+    resize: vertical;
+}
+
+.enquiry-form input[type="submit"] {
+    background-color: #2F4B3C;
+    color: #FBF8F3;
+    border: none;
+    padding: 12px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.enquiry-form input[type="submit"]:hover {
+    background-color: #24392D;
+}
+
+/* Simple search form (Products page) */
+.search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 480px;
+    margin: 0 auto 36px auto;
+}
+
+.search-form label {
+    display: none;
+}
+
+.search-form input[type="search"] {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #DDD2B8;
+    border-radius: 3px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1rem;
+    background-color: #FBF8F3;
+    color: #2A2118;
+}
+
+.search-form button {
+    background-color: #C08A3E;
+    color: #FBF8F3;
+    border: none;
+    padding: 0 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #A6752F;
+}
+
+/* ---------- Product table ---------- */
+.table-scroll {
+    overflow-x: auto;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #DDD2B8;
+    padding: 16px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.product-table th {
+    background-color: #EFE7D6;
+    color: #2F4B3C;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.6px;
+}
+
+.product-table td {
+    background-color: #FBF8F3;
+}
+
+.product-table img {
+    display: block;
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 3px;
+}
+
+.product-table ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    color: #3A3226;
+}
+
+.product-table ul li {
+    margin-bottom: 4px;
+}
+
+.product-name {
+    color: #2F4B3C;
+}
+
+.product-price {
+    color: #C08A3E;
+}
+
 /* ---------- Footer ---------- */
 footer {
     background-color: #2F4B3C;
@@ -192,4 +390,9 @@ footer a {
     .hero h1 {
         font-size: 2rem;
     }
+
+    .search-form {
+        flex-direction: column;
+    }
 }
+ {
