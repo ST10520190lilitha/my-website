@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Sindi Jubati Naturals</title>
+
+     <style>
+        /* Everything lives in this one HTML file — no external CSS or JS. */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #2A2118;
+            background-color: #FBF8F3;
+            line-height: 1.7;
+        }
+
+        /* ---------- Header & Navigation ---------- */
+        header {
+            background-color: #2F4B3C;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        header .logo {
+            color: #FBF8F3;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: #FBF8F3;
+            text-decoration: none;
+            margin-left: 26px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:first-child {
+            margin-left: 0;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid #C08A3E;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background-color: #EFE7D6;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #DDD2B8;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px 0;
+            font-size: 2.6rem;
+            color: #2F4B3C;
+        }
+
+        .hero p.subtitle {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #C08A3E;
+        }
+
+        /* ---------- Main Content ---------- */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 24px 70px 24px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        section h2 {
+            color: #2F4B3C;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #C08A3E;
+        }
+
+        section p {
+            font-size: 1.05rem;
+            color: #3A3226;
+            margin-bottom: 16px;
+        }
+
+        /* Simple divider */
+        .divider {
+            border: none;
+            border-top: 1px solid #DDD2B8;
+            width: 60%;
+            margin: 45px auto;
+        }
+
+        /* Detail list (contact + office) styled as cards, not bare bullets */
+        .detail-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 14px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .detail-list li {
+            background-color: #EFE7D6;
+            border-left: 4px solid #C08A3E;
+            padding: 14px 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.98rem;
+            color: #2F4B3C;
+        }
+
+        .detail-list li strong {
+            color: #7C9473;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.6px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .detail-list a {
+            color: #2F4B3C;
+            text-decoration: none;
+            border-bottom: 1px solid #C08A3E;
+        }
+
+        /* Map */
+        .map-wrapper {
+            max-width: 100%;
+            overflow: hidden;
+            border: 1px solid #DDD2B8;
+            border-radius: 4px;
+            box-shadow: 0 12px 30px -18px rgba(42, 33, 24, 0.4);
+            margin-top: 30px;
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 380px;
+            border: 0;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: #2F4B3C;
+            color: #D9D2C2;
+            text-align: center;
+            padding: 24px 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #C08A3E;
+            text-decoration: none;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 12px;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 18px;
+                display: inline-block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <!-- Website Logo -->
+        <div class="logo">Forever Living by Sindi Jubati</div>
+
+        <!-- Navigation Links -->
+        <   <nav>
+                            <font color="#FBF8F3" size="3" face="Arial, Helvetica, sans-serif">
+                                <a href="../index.html">Home</a> <!--This link will take us to the home page-->
+                                &nbsp;&nbsp;|&nbsp;&nbsp;
+                                <a href="./about.html">About us</a>
+                                &nbsp;&nbsp;|&nbsp;&nbsp;
+                                <a href="./contact.html">Contact Us</a>
+                                &nbsp;&nbsp;|&nbsp;&nbsp;
+                                <a href="./enquiry.html">Enquiry</a>
+                                &nbsp;&nbsp;|&nbsp;&nbsp;
+                                <a href="./products.html">Products</a>
+                            </font>
+                        </nav>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>About Us</h1>
+        <p class="subtitle">Natural products, made with care</p>
+    </div>
+
+    <!-- Main Section About Page -->
+    <main>
+
+        <section>
+            <h2>Welcome</h2>
+            <p>
+                Welcome to my website! My name is Sindi Jubati. This website is meant to advertise and educate
+                people about the benefits of my products. I am passionate about helping people improve their
+                health and well-being through natural products.
+            </p>
+            <p>
+                Our mission is to provide high-quality products that promote a healthy lifestyle.
+            </p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- About Details -->
+        <section>
+            <h2>Our Story</h2>
+            <p>
+                I started this business because I believe in the power of natural products to enhance people's
+                lives. Over the years, I have built a community of satisfied customers who have experienced the
+                benefits of our products firsthand.
+            </p>
+
+            <div class="callout">
+                "Every product we offer is chosen with one goal in mind — helping you feel your best, naturally."
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sindi Jubati Naturals. All rights reserved. | <a href="./contact.html">Get in touch</a></p>
+    </footer>
+
+</body>
+</html> 
