@@ -136,7 +136,7 @@ Some improvements that could be made to the website in the future include:
 * Connecting the enquiry form to a database or email service.
 * Adding more products and product categories.
 * Improving the search functionality.
-* Adding customer reviews.
+* Adding customer reviews. 
 * Adding social media links.
 * Improving accessibility features.
 * Adding more responsive design features for mobile devices.
