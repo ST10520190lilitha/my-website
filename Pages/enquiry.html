@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <!-- Site header: logo + main navigation, shared across all pages -->
     <header>
         <div class="logo">
             <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living Logo">
@@ -23,7 +24,7 @@
         </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero: page title banner, same pattern used on every page -->
     <div class="hero">
         <h1>Project Inquiry Form</h1>
         <p class="subtitle">Tell us what you're looking for</p>
@@ -32,35 +33,12 @@
     <!-- Main section: form -->
     <main>
         <section>
+            <!-- Enquiry form, styled via .enquiry-form in style.css -->
+            <!-- action="#" is a placeholder — this doesn't actually send
+                 anywhere yet; it needs a real endpoint (e.g. a form
+                 service, or a backend script) to deliver submissions -->
             <form class="enquiry-form" action="#" method="POST">
 
+                <!-- Visitor's name -->
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" placeholder="Tell us who you are" required>
-
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" placeholder="Where we can reply to you" required>
-
-                <label for="project_type">Type of product:</label>
-                <select id="project_type" name="type_of_product" required>
-                    <option value="">--Select--</option>
-                    <option value="skincare">Skincare</option>
-                    <option value="nutritional_drinks">Nutritional Drinks</option>
-                    <option value="fitness_and_weight_loss">Fitness and Weight Loss</option>
-                    <option value="Immune_Support">Immune Support</option>
-                </select>
-
-                <label for="message">Your Enquiry:</label>
-                <textarea id="message" name="message" rows="5" placeholder="Tell us a little more about what you need" required></textarea>
-
-                <input type="submit" value="Send Enquiry">
-
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./contact.html">Contact Us</a></p>
-    </footer>
-
-</body>
-</html>
