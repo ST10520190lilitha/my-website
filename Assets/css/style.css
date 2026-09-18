@@ -361,8 +361,8 @@ section p {
 
 .product-table img {
     display: block;
-    max-width: 140px;
-    width: 100%;
+    max-width: 120px;
+    width: 200%;
     height: auto;
     margin: 0 auto;
     border-radius: 3px;
