@@ -8,6 +8,14 @@
     box-sizing: border-box;
 }
 
+/* ---------- Default / base styles ---------- */
+html {
+    font-size: 100%;
+    /* 1rem = 16px by default — headings/body below use rem so the whole
+       page can be scaled from here at the breakpoints further down */
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Georgia, 'Times New Roman', serif;
@@ -16,8 +24,26 @@ body {
     line-height: 1.7;
 }
 
+/* Responsive images by default: every image scales down with its
+   container instead of overflowing on small screens. Individual
+   components (logo, product table) override the width where needed. */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+h1, h2, h3 {
+    line-height: 1.25;
+}
+
 /* ---------- Header & Navigation ---------- */
 header {
+    position: relative;
     background-color: #2F4B3C;
     padding: 18px 40px;
     display: flex;
@@ -56,8 +82,78 @@ nav a:first-child {
     margin-left: 0;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus-visible {
     border-bottom: 2px solid #C08A3E;
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+/* ---------- Mobile nav toggle (hamburger) ----------
+   A hidden checkbox + label is used instead of JavaScript.
+   The checkbox and label are hidden above the nav breakpoint;
+   below it, the label becomes a visible hamburger icon and the
+   checked state (via the ~ sibling combinator) reveals <nav>. */
+.nav-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    width: 28px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #FBF8F3;
+    transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.nav-toggle-label span {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-toggle-label span::before {
+    top: -9px;
+}
+
+.nav-toggle-label span::after {
+    top: 9px;
+}
+
+/* Turn the three bars into a cross when the menu is open */
+.nav-toggle:checked ~ .nav-toggle-label span {
+    background-color: transparent;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.nav-toggle:focus-visible ~ .nav-toggle-label {
+    outline: 2px solid #C08A3E;
+    outline-offset: 4px;
 }
 
 /* ---------- Hero ---------- */
@@ -240,6 +336,15 @@ section p {
     resize: vertical;
 }
 
+.enquiry-form input[type="text"]:focus,
+.enquiry-form input[type="email"]:focus,
+.enquiry-form select:focus,
+.enquiry-form textarea:focus {
+    outline: none;
+    border-color: #C08A3E;
+    box-shadow: 0 0 0 3px rgba(192, 138, 62, 0.25);
+}
+
 .enquiry-form input[type="submit"] {
     background-color: #2F4B3C;
     color: #FBF8F3;
@@ -293,6 +398,22 @@ section p {
 
 .search-form button:hover {
     background-color: #A6752F;
+}
+
+.search-form input[type="search"]:focus {
+    outline: none;
+    border-color: #C08A3E;
+    box-shadow: 0 0 0 3px rgba(192, 138, 62, 0.25);
+}
+
+.detail-list a:hover,
+.detail-list a:focus-visible {
+    color: #C08A3E;
+}
+
+footer a:hover,
+footer a:focus-visible {
+    text-decoration: underline;
 }
 
 /* ---------- Product table ---------- */
@@ -361,12 +482,16 @@ section p {
 
 .product-table img {
     display: block;
-    max-width: 120px;
-    width: 200%;
+    max-width: 140px;
+    width: 100%;
     height: auto;
     margin: 0 auto;
     border-radius: 3px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .product-table tbody tr:hover img {
@@ -430,29 +555,118 @@ footer a {
     text-decoration: none;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
+/* =========================================================
+   Responsive breakpoints
+   900px  — tablet: content narrows, spacing tightens
+   700px  — mobile nav switches to the hamburger toggle
+   480px  — small phones: typography + spacing shrink further
+   ========================================================= */
+
+/* ---------- Tablet: ~900px and down ---------- */
+@media (max-width: 900px) {
+    main {
+        max-width: 100%;
+        padding: 40px 20px 60px 20px;
     }
 
-    nav {
-        margin-top: 12px;
+    main.wide {
+        max-width: 100%;
     }
 
-    nav a {
-        margin-left: 0;
-        margin-right: 18px;
-        display: inline-block;
+    .hero {
+        padding: 46px 20px;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .enquiry-form {
+        padding: 24px;
+    }
+}
+
+/* ---------- Mobile: ~700px and down — responsive navigation ---------- */
+@media (max-width: 700px) {
+    /* Reveal the hamburger icon and hide the inline nav links */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    nav {
+        flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    /* Checked checkbox (menu open) expands the nav to show its links */
+    .nav-toggle:checked ~ nav {
+        max-height: 320px;
+        margin-top: 16px;
+    }
+
+    nav a {
+        margin: 0;
+        padding: 12px 4px;
+        border-bottom: 1px solid rgba(251, 248, 243, 0.15);
+        display: block;
+    }
+
+    nav a:last-child {
+        border-bottom: none;
     }
 
     .search-form {
         flex-direction: column;
+    }
+
+    .map-wrapper iframe {
+        height: 280px;
+    }
+}
+
+/* ---------- Small phones: ~480px and down — responsive typography ---------- */
+@media (max-width: 480px) {
+    html {
+        font-size: 93.75%;
+        /* ~15px base — headings and body text set in rem shrink with it */
+    }
+
+    .hero {
+        padding: 36px 16px;
+    }
+
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero p.subtitle {
+        font-size: 0.85rem;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    section p {
+        font-size: 0.98rem;
+    }
+
+    .intro-box,
+    .callout,
+    .enquiry-form {
+        padding: 18px;
+    }
+
+    header {
+        padding: 14px 18px;
+    }
+
+    header .logo {
+        font-size: 1.1rem;
     }
 }
  
