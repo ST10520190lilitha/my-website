@@ -154,3 +154,7 @@ Some improvements that could be made to the website in the future include:
 The Forever Living website provides a simple online platform for displaying products and business information. It makes it easier for customers to find product information and contact the business owner. The website also reduces the amount of time the business owner needs to spend searching through pictures or documents when customers ask about specific products.
 
 This project demonstrates the use of HTML, CSS, images, navigation, forms and basic website design principles to create a functional business website.
+
+##referances 
+
+Part 3 
