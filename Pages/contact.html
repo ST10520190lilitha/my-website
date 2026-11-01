@@ -126,6 +126,26 @@
     <footer>
         <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./enquiry.html">Send an enquiry</a></p>
     </footer>
+    <script> 
+
+        //Form Input validation for the contact form
+            function validateForm(){  
+                
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const errorMessage = document.getElementById('errorMessage'); 
+
+            errorMessage.textContent = '';
+            //validate input fields
+            if(name === '' || email === '' || surname === '' || message === ''){
+                errorMessage.textContent = 'All input fields are required!!!';
+                //alert("All input fields are required!!!");
+                return false; }
+           
+            
+    </script>
 
 </body>
 </html>
