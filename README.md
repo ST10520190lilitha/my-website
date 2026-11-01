@@ -157,4 +157,21 @@ This project demonstrates the use of HTML, CSS, images, navigation, forms and ba
 
 ##referances 
 
-Part 3 
+##Part 3  
+
+ChangeLog for part 3 
+
+###Contact page 
+
+I added the validation form. 
+
+The first validation is for a required feild if the user skips a field it will display All input fields are required.
+
+the second required feild is for email if the user doesnt add their email it will appear as incorrect email format. if it doesnt have the @ sign. 
+
+when the user has submitted their information and it meets the requirements of the form the message that will display is " Your message was submitted successfuly
+
+
+
+
+
