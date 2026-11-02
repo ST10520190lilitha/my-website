@@ -103,5 +103,26 @@
         <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./Pages/enquiry.html">Send an enquiry</a></p>
     </footer>
 
+     <script>
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active'); // animate hamburger
+            });
+
+            //DATE STAMP ADDED
+                function displayDate() {
+                const today = new Date();
+
+                const dateStr = today.toDateString(); // e.g., 'Fri Oct 11 2024'
+
+                document.getElementById("datestamp").innerHTML = `Today's Date: ${dateStr}`;
+            }
+
+                displayDate();
+        </script> 
+        
 </body>
 </html>
