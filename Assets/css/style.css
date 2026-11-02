@@ -951,4 +951,138 @@ nav a[aria-current="page"] {
         width: 140px;
         height: 140px;
     }
+} 
+
+/* =========================================================
+   Fit-to-screen layout: no scrolling on laptops and desktops
+   Only applies to screens at least 992px wide and 600px tall.
+   Phones and small windows keep the normal stacked layout.
+   ========================================================= */
+@media (min-width: 992px) and (min-height: 600px) {
+
+    /* Smaller text and tighter header, hero and footer */
+    html { font-size: 90%; }
+    header { padding: 8px 32px; }
+    header .logo { font-size: 1.1rem; }
+    .hero { padding: 14px 20px; }
+    .hero h1 { font-size: 1.6rem; margin: 0 0 2px 0; }
+    .hero p.subtitle { font-size: 0.8rem; }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        flex-wrap: wrap;
+        padding: 8px 20px;
+    }
+    footer p { margin: 0; }
+
+    /* Main becomes a grid so sections sit side by side */
+    main.fit {
+        max-width: 1280px;
+        padding: 18px 28px 12px 28px;
+        display: grid;
+        gap: 16px 32px;
+        align-items: start;
+    }
+
+    .fit section { margin-bottom: 0; }
+
+    .fit section h2 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+    }
+
+    .fit section p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .fit .divider { display: none; }
+
+    /* References: small, in two columns, across the full width */
+    .fit .references { grid-column: 1 / -1; }
+    .fit .references h2 { font-size: 1rem; margin-bottom: 6px; }
+    .fit .reference-list { columns: 2; column-gap: 32px; font-size: 0.75rem; }
+    .fit .reference-list li { margin-bottom: 4px; break-inside: avoid; }
+    .fit .references-note { margin: 4px 0 0 0; font-size: 0.7rem; }
+
+    /* ---------- About page: two columns, team photos below ---------- */
+    main.fit-about { grid-template-columns: 1fr 1fr; }
+    .fit-about .team-gallery { grid-column: 1 / -1; }
+    .fit-about .team-photos { gap: 48px; }
+    .fit-about .team-photo { width: 110px; height: 110px; }
+    .fit-about .team-figure figcaption { margin-top: 8px; }
+    .fit-about .callout { margin-top: 12px; padding: 12px 18px; }
+
+    /* ---------- Enquiry page: form on the left, FAQ on the right ---------- */
+    main.fit-enquiry { grid-template-columns: 1fr 1fr; }
+
+    /* Each label sits beside its field instead of above it */
+    .fit-enquiry .enquiry-form {
+        max-width: none;
+        padding: 16px 20px;
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        column-gap: 12px;
+        align-items: center;
+    }
+
+    .fit-enquiry .enquiry-form label { margin-bottom: 0; }
+
+    .fit-enquiry .enquiry-form input,
+    .fit-enquiry .enquiry-form select,
+    .fit-enquiry .enquiry-form textarea {
+        margin: 0 0 10px 0;
+        padding: 7px 10px;
+    }
+
+    .fit-enquiry .enquiry-form textarea { height: 4.5rem; }
+
+    .fit-enquiry .enquiry-form .form-error,
+    .fit-enquiry .enquiry-form .form-success,
+    .fit-enquiry .enquiry-form button {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .fit-enquiry .enquiry-form .form-error,
+    .fit-enquiry .enquiry-form .form-success { margin-bottom: 8px; }
+
+    .fit-enquiry .faq-question { padding: 0.6rem 2.2rem 0.6rem 0.5rem; }
+
+    /* ---------- Contact page: three columns ---------- */
+    main.fit-contact {
+        grid-template-columns: 1fr 1.15fr 1fr;
+        grid-template-areas:
+            "intro form office"
+            "touch form office"
+            "refs  refs refs";
+    }
+
+    .fit-intro  { grid-area: intro; }
+    .fit-touch  { grid-area: touch; }
+    .fit-form   { grid-area: form; }
+    .fit-office { grid-area: office; }
+    .fit-contact .references { grid-area: refs; }
+
+    .fit-contact .detail-list { max-width: none; gap: 8px; }
+    .fit-contact .detail-list li { padding: 8px 14px; font-size: 0.9rem; }
+
+    .fit-contact .contact-form { max-width: none; padding: 14px 18px; }
+    .fit-contact .contact-form label { margin-bottom: 3px; }
+
+    .fit-contact .contact-form input,
+    .fit-contact .contact-form select,
+    .fit-contact .contact-form textarea {
+        margin-bottom: 10px;
+        padding: 7px 10px;
+    }
+
+    .fit-contact .contact-form textarea { height: 5rem; }
+
+    .fit-contact .map-wrapper { margin-top: 12px; }
+    .fit-contact .map-wrapper iframe { height: 200px; }
 }

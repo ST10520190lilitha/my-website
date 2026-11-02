@@ -204,24 +204,71 @@
         }
  
         // Runs when the visitor clicks Submit
-        form.addEventListener('submit', function (event) {
-            errorMessage.textContent = '';
-            successMessage.textContent = '';
- 
-            const error = getValidationError();
- 
-            if (error !== '') {
-                event.preventDefault();               // stop the submission and show the problem
-                errorMessage.textContent = error;
-                return;
-            }
- 
-            // Valid. Remove the next three lines once action="#" is replaced with a real
-            // form handler, so the message is actually sent.
-            event.preventDefault();
-            successMessage.textContent = 'Your message was submitted successfully. I will reply within 24 hours.';
-            form.reset();
-        });
+        // ------------------------------------------------------------
+// Sending the message to the business owner.
+// fetch() posts the form data to FormSubmit [3], which emails it to the owner [4].
+// If sending fails, the visitor's own email app opens with the message ready (mailto).
+// ------------------------------------------------------------
+const OWNER_EMAIL = 'Sindi1.jubati@gmail.com';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + OWNER_EMAIL;
+const submitButton = form.querySelector('button[type="submit"]');
+
+async function sendToOwner(subject, fields) {
+    const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({ _subject: subject, _template: 'table' }, fields))
+    });
+    if (!response.ok) {
+        throw new Error('The message could not be sent.');
+    }
+}
+
+// Backup plan: opens the visitor's email app with everything filled in
+function openEmailApp(subject, fields) {
+    const lines = Object.keys(fields).map(function (key) {
+        return key + ': ' + fields[key];
+    });
+    window.location.href = 'mailto:' + OWNER_EMAIL +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+}
+
+// Runs when the visitor clicks Submit
+form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    errorMessage.textContent = '';
+    successMessage.textContent = '';
+
+    const error = getValidationError();
+    if (error !== '') {
+        errorMessage.textContent = error;
+        return;
+    }
+
+    const subject = 'Website contact form';
+    const fields = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        message: document.getElementById('message').value.trim()
+    };
+
+    submitButton.disabled = true;           // stops double clicks while sending
+    submitButton.textContent = 'Sending...';
+
+    try {
+        await sendToOwner(subject, fields);
+        successMessage.textContent = 'Your message was submitted successfully. I will reply within 24 hours.';
+        form.reset();
+    } catch (problem) {
+        errorMessage.textContent = 'We could not send this automatically. Your email app will open with the message ready to send.';
+        openEmailApp(subject, fields);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit';
+    }
+});
  
         // ------------------------------------------------------------
         // Live clock (dynamic content), built on the Date object [2]
