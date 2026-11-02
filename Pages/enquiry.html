@@ -89,6 +89,51 @@
             </form>
         </section>
 
+<!-- FAQ: answers common questions before someone submits an enquiry -->
+<section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <button type="button" class="faq-question" id="faq-q1"
+                aria-expanded="false" aria-controls="faq-a1">
+            How long does it take to get a reply?
+        </button>
+        <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <p>I reply to every enquiry within 24 hours.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button type="button" class="faq-question" id="faq-q2"
+                aria-expanded="false" aria-controls="faq-a2">
+            Which products can I ask about?
+        </button>
+        <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <p>You can ask about Aloe Drinks, Skincare &amp; Anti-Aging and Personal Care. Choose a category in the form above.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button type="button" class="faq-question" id="faq-q3"
+                aria-expanded="false" aria-controls="faq-a3">
+            Do I have to pay to send an enquiry?
+        </button>
+        <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <p>No. Sending an enquiry is free and does not commit you to buying anything.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button type="button" class="faq-question" id="faq-q4"
+                aria-expanded="false" aria-controls="faq-a4">
+            What phone number format should I use?
+        </button>
+        <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <p>Use a 10-digit South African number that starts with 0, for example 0815910736.</p>
+        </div>
+    </div>
+</section>
+
         <!-- References: IEEE style, numbered in the order they are first cited on this page -->
         <section class="references" aria-labelledby="refs-heading">
             <h2 id="refs-heading">References</h2>
@@ -174,7 +219,32 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
 
             document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        } // ------------------------------------------------------------
+// FAQ accordion: show or hide an answer when its question is clicked
+// Uses the aria-expanded attribute so screen readers know the state [3]
+// ------------------------------------------------------------
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(function (question) {
+    question.addEventListener('click', function () {
+        const answer = document.getElementById(question.getAttribute('aria-controls'));
+        const isOpen = question.getAttribute('aria-expanded') === 'true';
+
+        // Close every other answer first, so only one is open at a time
+        faqQuestions.forEach(function (other) {
+            other.setAttribute('aria-expanded', 'false');
+            document.getElementById(other.getAttribute('aria-controls')).hidden = true;
+        });
+
+        // Open the clicked answer, unless it was already open (then it stays closed)
+        if (!isOpen) {
+            question.setAttribute('aria-expanded', 'true');
+            answer.hidden = false;
         }
+    });
+});
+
+
 
         displayTime();                  // show the time straight away
         setInterval(displayTime, 1000); // then update it every second

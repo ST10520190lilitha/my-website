@@ -798,4 +798,42 @@ nav a[aria-current="page"] {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
     color: #5A5040;
+} 
+
+/* ---------- FAQ accordion ---------- */
+.faq-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1rem 2.5rem 1rem 0.5rem;
+    text-align: left;
+    font: inherit;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-question:hover,
+.faq-question:focus-visible {
+    background-color: #f4f4f4;
+}
+
+/* Plus sign that turns into a minus when the question is open */
+.faq-question::after {
+    content: "+";
+    position: absolute;
+    right: 0.75rem;
+    font-size: 1.25rem;
+}
+
+.faq-question[aria-expanded="true"]::after {
+    content: "\2212";
+}
+
+.faq-answer {
+    padding: 0 0.5rem 1rem;
 }
