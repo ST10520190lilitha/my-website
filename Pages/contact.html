@@ -1,68 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Sindi Jubati, your personal Forever Living business owner. Call, email or send a message and get a reply within 24 hours.">
     <title>Contact Us — Forever Living by Sindi Jubati</title>
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
-
+ 
 <body>
     <!-- Site header: logo + main navigation, shared across all pages -->
     <header>
         <div class="logo">
-            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living Logo">
+            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living logo">
             Forever Living by Sindi Jubati
         </div>
-
+ 
         <!-- Hidden checkbox drives the mobile menu toggle (no JS needed) -->
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
             <span></span>
         </label>
-
-        <nav>
+ 
+        <nav aria-label="Main navigation">
             <a href="../index.html">Home</a>
             <a href="./about.html">About us</a>
-            <a href="./contact.html">Contact Us</a>
+            <a href="./contact.html" aria-current="page">Contact Us</a>
             <a href="./enquiry.html">Enquiry</a>
             <a href="./products.html">Products</a>
         </nav>
     </header>
-
+ 
     <!-- Hero: page title banner, same pattern used on every page -->
     <div class="hero">
         <h1>Contact Us</h1>
         <p class="subtitle">We'd love to hear from you</p>
     </div>
-
-    <!--Main Section Contact Page-->
+ 
+    <!-- Main section: Contact page -->
     <main>
-
+ 
         <!-- Short intro pitching Sindi as a personal point of contact -->
         <section>
             <p>
-                We make it easy to start being my client. As you may know, there are many Forever Living
-                business owners in South Africa — but I'll give you personal, one-on-one attention. Reach out
+                We make it easy to become my client. As you may know, there are many Forever Living
+                business owners in South Africa, but I'll give you personal, one-on-one attention. Reach out
                 below and I'll get back to you within 24 hours.
             </p>
         </section>
-
+ 
         <!-- Visual divider between the intro and the contact details -->
         <hr class="divider" />
-
-        <!--Contact Details-->
-        <!-- Phone, email and hours, styled as cards via .detail-list -->
+ 
+        <!-- Contact details: phone, email and hours, styled as cards via .detail-list -->
         <section>
             <h2>Get in Touch</h2>
-
+ 
             <ul class="detail-list">
                 <li>
                     <strong>Phone</strong>
+                    <!-- tel: link lets mobile visitors tap to call -->
                     <a href="tel:+27815910736">081 591 0736</a>
                 </li>
                 <li>
                     <strong>Email</strong>
+                    <!-- mailto: link opens the visitor's email app -->
                     <a href="mailto:Sindi.jubati@gmail.com">Sindi.jubati@gmail.com</a>
                 </li>
                 <li>
@@ -70,48 +73,67 @@
                     Monday to Sunday, 9:00 AM – 9:00 PM
                 </li>
             </ul>
-        </section> 
-
-        <section> 
-            <form class="contact-form" action="#" method="POST">
-
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Please enter your name" required>
-
-                <label for="Phone number ">Phone number:</label>
-                <input type="tel" id="phone number" name="phone number" placeholder="Please enter your phone number" required> 
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Please enter your email" required> 
-
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" placeholder="Please enter your message" required></textarea>
-
-                <button type="submit">Submit</button>
-
-            </form>
-
         </section>
-
-        <!-- Visual divider between contact details and the office section -->
+ 
+        <!-- Contact form -->
+        <section>
+            <h2>Send a Message</h2>
+ 
+            <!--
+                The form validation approach follows the client-side validation guide in [1]:
+                "required" attributes as a fallback, plus JavaScript checks with custom messages.
+                novalidate switches off the browser's own pop-ups so our messages are shown instead.
+                action="#" is a placeholder: replace it with a real form handler to receive messages.
+            -->
+            <form class="contact-form" id="contactForm" action="#" method="POST" novalidate>
+ 
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Please enter your name"
+                       autocomplete="name" required>
+ 
+                <!-- The label's "for" must match the input's id exactly; ids cannot contain spaces -->
+                <label for="phone">Phone number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. 0815910736"
+                       autocomplete="tel" inputmode="numeric" maxlength="10" required>
+ 
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Please enter your email"
+                       autocomplete="email" required>
+ 
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5"
+                          placeholder="Please enter your message (at least 10 characters)" required></textarea>
+ 
+                <!-- Validation message: role="alert" makes screen readers announce it -->
+                <p id="errorMessage" class="form-error" role="alert" aria-live="assertive"></p>
+ 
+                <!-- Success message shown after a valid submission -->
+                <p id="successMessage" class="form-success" role="status" aria-live="polite"></p>
+ 
+                <button type="submit">Submit</button>
+ 
+            </form>
+        </section>
+ 
+        <!-- Visual divider between the form and the office section -->
         <hr class="divider" />
-
+ 
         <!-- Office location: physical address + embedded map -->
         <section>
             <h2>Our Office</h2>
-
+ 
             <ul class="detail-list">
                 <li>
                     <strong>Address</strong>
                     43287 Scenery Park Rd, Scenery Park, KuGompo City, 5253
                 </li>
             </ul>
-
-            <!--Google map-->
+ 
             <!-- Embedded Google Maps iframe pinned to the office address above -->
             <div class="map-wrapper">
+                <!-- The title attribute lets screen readers describe the map -->
                 <iframe
+                    title="Map showing the Forever Living office location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d398.7047022416342!2d27.822626181021853!3d-32.99045800752824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e0cda92597f1%3A0xc817c5b5f23f8e9f!2s43287%20Scenery%20Park%20Rd%2C%20Scenery%20Park%2C%20KuGompo%20City%2C%205253!5e1!3m2!1sen!2sza!4v1786372108712!5m2!1sen!2sza"
                     allowfullscreen=""
                     loading="lazy"
@@ -119,88 +141,115 @@
                 </iframe>
             </div>
         </section>
-
+ 
+        <!-- References: IEEE style, numbered in the order they are first cited on this page -->
+        <section class="references" aria-labelledby="refs-heading">
+            <h2 id="refs-heading">References</h2>
+            <ol class="reference-list">
+                <li id="ref-1">MDN Contributors, "Client-side form validation," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/docs/Learn_web_development/Extensions/Forms/Form_validation</li>
+                <li id="ref-2">MDN Contributors, "Date," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date</li>
+            </ol>
+            <p class="references-note">References [1] and [2] are cited in the code comments of this page.</p>
+        </section>
+ 
     </main>
-
-    <!-- Site footer: copyright + quick link to the enquiry page -->
+ 
+    <!-- Site footer: copyright + quick link to the enquiry page + live clock -->
     <footer>
         <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./enquiry.html">Send an enquiry</a></p>
+        <p>Local time: <span id="time"></span></p>
     </footer>
-    <script> 
-
-        //Form Input validation for the contact form
-            function validateForm(){  
-                
+ 
+    <script>
+        // ------------------------------------------------------------
+        // Contact form validation (approach based on [1])
+        // ------------------------------------------------------------
+        const form = document.getElementById('contactForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+ 
+        // Rules kept in one place so they are easy to change
+        const MIN_MESSAGE_LENGTH = 10;                                // minimum characters in the message
+        const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const PHONE_PATTERN = /^0\d{9}$/;                             // South African number: starts with 0, 10 digits
+ 
+        // Returns an error message, or an empty string when everything is valid
+        function getValidationError() {
             const name = document.getElementById('name').value.trim();
-            const surname = document.getElementById('surname').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
-            const errorMessage = document.getElementById('errorMessage'); 
-
+ 
+            // 1. Required fields (the old code also checked a "surname" field that does not exist)
+            if (name === '' || phone === '' || email === '' || message === '') {
+                return 'All input fields are required.';
+            }
+ 
+            // 2. Email format
+            if (!EMAIL_PATTERN.test(email)) {
+                return 'Incorrect email format. Please enter an address like name@example.com.';
+            }
+ 
+            // 3. Phone number: 10 digits, starting with 0
+            if (!PHONE_PATTERN.test(phone)) {
+                return 'Phone number must be 10 digits long and start with 0.';
+            }
+ 
+            // 4. Message length (the old check used 100 but the message said 10)
+            if (message.length < MIN_MESSAGE_LENGTH) {
+                return 'Message must be at least ' + MIN_MESSAGE_LENGTH + ' characters long.';
+            }
+ 
+            return '';
+        }
+ 
+        // Runs when the visitor clicks Submit
+        form.addEventListener('submit', function (event) {
             errorMessage.textContent = '';
-            //validate input fields
-            if(name === '' || email === '' || surname === '' || message === ''){
-                errorMessage.textContent = 'All input fields are required!!!';
-                //alert("All input fields are required!!!");
-                return false; }
-
-         //validate email
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-            if(!email.match(emailPattern)){
-                errorMessage.textContent = 'Incorrect email format!!!';
-                //alert("Incorrect email format!!!");
-                return false;
-            } 
-
-        //validate message length
-            if(message.length < 100){
-                errorMessage.textContent = 'Message must be at least 10 characters long!!!';
-                //alert("Message must be at least 100 characters long!!!");
-                return false;
-            }  
-            
-        //validate phone number
-            const phoneNumber = document.getElementById('phone number').value.trim();
-            const phonePattern = /^\d{10}$/; // Assuming a 10-digit phone number        
-
-            if(!phoneNumber.match(phonePattern)){
-                errorMessage.textContent = 'Number must be 10 digits long!';
-                //alert("Incorrect phone number format!!!");
-                return false;
-            } 
-
-            if(!phoneNumber.startsWith('0')){
-                errorMessage.textContent = 'Number must start with 0!';
-                //alert("Incorrect phone number format!!!");
-                return false;
+            successMessage.textContent = '';
+ 
+            const error = getValidationError();
+ 
+            if (error !== '') {
+                event.preventDefault();               // stop the submission and show the problem
+                errorMessage.textContent = error;
+                return;
             }
+ 
+            // Valid. Remove the next three lines once action="#" is replaced with a real
+            // form handler, so the message is actually sent.
+            event.preventDefault();
+            successMessage.textContent = 'Your message was submitted successfully. I will reply within 24 hours.';
+            form.reset();
+        });
+ 
+        // ------------------------------------------------------------
+        // Live clock (dynamic content), built on the Date object [2]
+        // ------------------------------------------------------------
+        // Note: the old file defined displayTime() twice and left a submit listener unfinished,
+        // which broke the whole script. Each function now appears once.
+        function displayTime() {
+            const now = new Date();
+ 
+            // padStart adds a leading zero to single digits (e.g. 5 -> "05")
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+ 
+            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        } 
 
-            alert("Your form was submitted successfully!!!");
-            return true;
-        }        
-           
-          //Inserting TimeStamp (Dynamic content)
-            function displayTime() {
-                const now = new Date();
-                let hours = now.getHours();
-                let minutes = now.getMinutes();
-                let seconds = now.getSeconds();
-
-                // Add leading zeroes for single-digit minutes and seconds
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                const currentTime = hours + ":" + minutes + ":" + seconds;
-                document.getElementById("time").textContent = currentTime;
-            }
-
-            // Call the displayTime function every second to update the time
-            setInterval(displayTime, 1000);
-
-            // Display the time immediately when the page loads
-            displayTime();   
+        mailtoLink= mailtobuildMailto (" website contact form", 
+                                                                contactForm.name.value, 
+                                                                contactForm.email.value, 
+                                                                contactForm.phone.value, 
+                                                                contactForm.message.value); 
+ 
+        displayTime();                  // show the time straight away
+        setInterval(displayTime, 1000); // then update it every second
     </script>
-
+ 
 </body>
 </html>
+ 
+Claude finished the response
