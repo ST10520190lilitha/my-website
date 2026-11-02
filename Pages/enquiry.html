@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Send an enquiry about Forever Living products to Sindi Jubati.">
     <title>Enquiry — Forever Living by Sindi Jubati</title>
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
@@ -11,7 +12,7 @@
     <!-- Site header: logo + main navigation, shared across all pages -->
     <header>
         <div class="logo">
-            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living Logo">
+            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living logo">
             Forever Living by Sindi Jubati
         </div>
 
@@ -21,42 +22,162 @@
             <span></span>
         </label>
 
-        <nav>
+        <nav aria-label="Main navigation">
             <a href="../index.html">Home</a>
             <a href="./about.html">About us</a>
             <a href="./contact.html">Contact Us</a>
-            <a href="./enquiry.html">Enquiry</a>
+            <a href="./enquiry.html" aria-current="page">Enquiry</a>
             <a href="./products.html">Products</a>
         </nav>
     </header>
 
     <!-- Hero: page title banner, same pattern used on every page -->
     <div class="hero">
-        <h1>Project Inquiry Form</h1>
+        <h1>Enquiry Form</h1>
         <p class="subtitle">Tell us what you're looking for</p>
     </div>
 
-    <!-- Main section: form -->
+    <!-- Main section: enquiry form -->
     <main>
         <section>
-            <!-- Enquiry form, styled via .enquiry-form in style.css -->
-            <!-- action="#" is a placeholder — this doesn't actually send
-                 anywhere yet; it needs a real endpoint (e.g. a form
-                 service, or a backend script) to deliver submissions -->
-            <form class="enquiry-form" action="#" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Please enter your name" required>
+            <h2>Product Enquiry</h2>
 
-                <label for="Phone number ">Phone number:</label>
-                <input type="tel" id="phone number" name="phone number" required> 
+            <!--
+                Enquiry form, styled via .enquiry-form in style.css.
+                Validation approach follows the client-side validation guide in [1].
+                novalidate switches off the browser's own pop-ups so our messages are shown instead.
+                action="#" is a placeholder: it does not send anywhere yet. It needs a real endpoint
+                (e.g. a form service or a backend script) to deliver submissions.
+                The old file closed the form before the Submit button and had no id, so the
+                script could not find it. Everything now sits inside this one form.
+            -->
+            <form class="enquiry-form" id="enquiryForm" action="#" method="POST" novalidate>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Please enter your name"
+                       autocomplete="name" required>
+
+                <!-- id fixed: ids cannot contain spaces, and the label's "for" must match it -->
+                <label for="phone">Phone number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. 0815910736"
+                       autocomplete="tel" inputmode="numeric" maxlength="10" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Please enter your email"
+                       autocomplete="email" required>
+
+                <!-- Product category: matches the three categories on the Products page -->
+                <label for="category">Product category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Please choose a category</option>
+                    <option value="aloe-drinks">Aloe Drinks</option>
+                    <option value="skincare">Skincare &amp; Anti-Aging</option>
+                    <option value="personal-care">Personal Care</option>
+                </select>
 
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="5"
+                          placeholder="Please tell us what you would like to know" required></textarea>
 
-             
+                <!-- Validation message: role="alert" makes screen readers announce it -->
+                <p id="errorMessage" class="form-error" role="alert" aria-live="assertive"></p>
+
+                <!-- Success message shown after a valid submission (the old script looked for this id but it did not exist) -->
+                <p id="successMessage" class="form-success" role="status" aria-live="polite"></p>
 
                 <button type="submit">Submit</button>
+            </form>
+        </section>
 
+        <!-- References: IEEE style, numbered in the order they are first cited on this page -->
+        <section class="references" aria-labelledby="refs-heading">
+            <h2 id="refs-heading">References</h2>
+            <ol class="reference-list">
+                <li id="ref-1">MDN Contributors, "Client-side form validation," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/docs/Learn_web_development/Extensions/Forms/Form_validation</li>
+                <li id="ref-2">MDN Contributors, "Date," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date</li>
+            </ol>
+            <p class="references-note">References [1] and [2] are cited in the code comments of this page.</p>
+        </section>
+    </main>
+
+    <!-- Site footer: copyright + quick link to contact page + live clock -->
+    <footer>
+        <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./contact.html">Get in touch</a></p>
+        <p>Local time: <span id="time"></span></p>
+    </footer>
+
+    <script>
+        // ------------------------------------------------------------
+        // Enquiry form validation (approach based on [1])
+        // ------------------------------------------------------------
+        // Removed: the old hamburger code. It looked for .hamburger and .nav-links, which do not
+        // exist on this page, so it caused an error before the form code could run.
+        const form = document.getElementById('enquiryForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        const MIN_MESSAGE_LENGTH = 10;
+        const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const PHONE_PATTERN = /^0\d{9}$/;   // South African number: starts with 0, 10 digits
+
+        // Returns an error message, or an empty string when everything is valid
+        function getValidationError() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const category = document.getElementById('category').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (category === '') {
+                return 'Please select a product category.';
+            }
+            if (name === '' || phone === '' || email === '' || message === '') {
+                return 'Please fill in all required fields.';
+            }
+            if (!EMAIL_PATTERN.test(email)) {
+                return 'Incorrect email format. Please enter an address like name@example.com.';
+            }
+            if (!PHONE_PATTERN.test(phone)) {
+                return 'Phone number must be 10 digits long and start with 0.';
+            }
+            if (message.length < MIN_MESSAGE_LENGTH) {
+                return 'Message must be at least ' + MIN_MESSAGE_LENGTH + ' characters long.';
+            }
+            return '';
+        }
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();               // no real endpoint yet, so never submit for real
+            errorMessage.textContent = '';
+            successMessage.textContent = '';
+
+            const error = getValidationError();
+            if (error !== '') {
+                errorMessage.textContent = error;
+                return;
+            }
+
+            // Valid: show the success message and clear the form
+            successMessage.textContent = 'Thank you! Your enquiry was submitted successfully. I will reply within 24 hours.';
+            form.reset();
+        });
+
+        // ------------------------------------------------------------
+        // Live clock (dynamic content), built on the Date object [2]
+        // ------------------------------------------------------------
+        function displayTime() {
+            const now = new Date();
+
+            // padStart adds a leading zero to single digits (e.g. 5 -> "05")
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+
+        displayTime();                  // show the time straight away
+        setInterval(displayTime, 1000); // then update it every second
+    </script>
+</body>
+</html>

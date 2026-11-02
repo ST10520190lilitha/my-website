@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — Sindi Jubati Naturals</title>
+    <meta name="description" content="Meet Sindi Jubati, your Forever Living business owner, and learn why she believes in natural products.">
+    <title>About Us — Forever Living by Sindi Jubati</title>
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
 
@@ -12,7 +13,7 @@
     <!-- Site header: logo + main navigation, shared across all pages -->
     <header>
         <div class="logo">
-            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living Logo">
+            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living logo">
             Forever Living by Sindi Jubati
         </div>
 
@@ -22,9 +23,9 @@
             <span></span>
         </label>
 
-        <nav>
+        <nav aria-label="Main navigation">
             <a href="../index.html">Home</a>
-            <a href="./about.html">About us</a>
+            <a href="./about.html" aria-current="page">About us</a>
             <a href="./contact.html">Contact Us</a>
             <a href="./enquiry.html">Enquiry</a>
             <a href="./products.html">Products</a>
@@ -37,7 +38,7 @@
         <p class="subtitle">Natural products, made with care</p>
     </div>
 
-    <!-- Main Section About Page -->
+    <!-- Main section: About page -->
     <main>
 
         <!-- Intro: short welcome message + mission statement -->
@@ -48,6 +49,11 @@
                 people about the benefits of my products. I am passionate about helping people improve their
                 health and well-being through natural products.
             </p>
+            <!-- In-text citation [1]: company background paraphrased from the official Forever Living website -->
+            <p>
+                The products I offer come from Forever Living Products, a wellness company founded in 1978
+                that is best known for its aloe vera-based products <a class="cite" href="#ref-1">[1]</a>.
+            </p>
             <p>
                 Our mission is to provide high-quality products that promote a healthy lifestyle.
             </p>
@@ -56,7 +62,7 @@
         <!-- Visual divider between the intro and the story section -->
         <hr class="divider" />
 
-        <!-- About Details: business backstory + a pull-quote styled with .callout -->
+        <!-- About details: business backstory + a pull-quote styled with .callout -->
         <section>
             <h2>Our Story</h2>
             <p>
@@ -65,18 +71,42 @@
                 benefits of our products firsthand.
             </p>
 
-            <!-- Pull-quote / callout box, styled in style.css under .callout -->
+            <!-- Pull-quote / callout box, styled in style.css under .callout (this is the owner's own statement) -->
             <div class="callout">
                 "Every product we offer is chosen with one goal in mind — helping you feel your best, naturally."
             </div>
         </section>
 
+       
+
     </main>
 
-    <!-- Site footer: copyright + quick link to contact page -->
+    <!-- Site footer: copyright + quick link to contact page + live clock -->
     <footer>
-        <p>&copy; 2026 Sindi Jubati Naturals. All rights reserved. | <a href="./contact.html">Get in touch</a></p>
+        <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./contact.html">Get in touch</a></p>
+        <p>Local time: <span id="time"></span></p>
     </footer>
 
+    <script>
+        // ------------------------------------------------------------
+        // Live clock (dynamic content), built on the Date object [2]
+        // ------------------------------------------------------------
+        // Removed: the old hamburger, accordion and lightbox code. It looked for elements
+        // (.hamburger, .accordion, #lightbox) that are not on this page, which caused errors
+        // and stopped the clock from running. The mobile menu works with CSS only.
+        function displayTime() {
+            const now = new Date();
+
+            // padStart adds a leading zero to single digits (e.g. 5 -> "05")
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+
+        displayTime();                  // show the time straight away
+        setInterval(displayTime, 1000); // then update it every second
+    </script>
 </body>
 </html>

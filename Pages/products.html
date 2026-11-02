@@ -1,129 +1,218 @@
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Products · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Forever Living aloe drinks, skincare and personal care products with prices and benefits.">
     <title>Products — Forever Living by Sindi Jubati</title>
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
-
+ 
 <body>
     <!-- Site header: logo + main navigation, shared across all pages -->
     <header>
         <div class="logo">
-            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living Logo">
+            <img src="../Assets/images/forever-living-logo_8268.png" alt="Forever Living logo">
             Forever Living by Sindi Jubati
         </div>
-
+ 
         <!-- Hidden checkbox drives the mobile menu toggle (no JS needed) -->
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
             <span></span>
         </label>
-
-        <nav>
+ 
+        <nav aria-label="Main navigation">
             <a href="../index.html">Home</a>
             <a href="./about.html">About us</a>
             <a href="./contact.html">Contact Us</a>
             <a href="./enquiry.html">Enquiry</a>
-            <a href="./products.html">Products</a>
+            <a href="./products.html" aria-current="page">Products</a>
         </nav>
     </header>
-
+ 
     <!-- Hero: page title banner, same pattern used on every page -->
     <div class="hero">
         <h1>Products</h1>
         <p class="subtitle">Natural products, made with care</p>
     </div>
-
+ 
     <!-- Main section: uses the wider "wide" main variant so the product
          tables have more horizontal room than the other pages -->
     <main class="wide">
-
+ 
         <section>
-            <p style="text-align:center;">Here are some of the products that we offer:</p>
             <h2>My Most Popular Products</h2>
-
+            <p style="text-align:center;">Here are some of the products that we offer:</p>
+ 
+            <!-- Product search: filters the table rows as the visitor types (see script below, [2]) -->
+            <form class="search-form" id="searchForm" role="search">
+                <label for="productSearch">Search products</label>
+                <input type="search" id="productSearch" name="q" placeholder="Search by name or benefit, e.g. aloe" autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
+            <p id="noResults" class="note" role="status" hidden>No products match your search.</p>
+ 
+            <p class="note">
+                Product information is for general interest only and is not medical advice.
+                Please speak to a health professional before using any product to treat a condition.
+            </p>
+ 
             <!-- ============================================= -->
             <!-- CATEGORY 1: Aloe Drinks                        -->
             <!-- ============================================= -->
             <h3>Aloe Drinks</h3>
             <div class="table-scroll">
                 <table class="product-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Product</th>
-                        <th>Benefits</th>
-                        <th>Price</th>
-                    </tr>
-
+                    <caption>Aloe Drinks. Product details adapted from the manufacturer's product information <a class="cite" href="#ref-1">[1]</a>.</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Benefits</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+ 
                     <tr>
                         <td><span class="product-name"><b>Forever Aloe Vera Gel (1L)</b></span></td>
                         <td>
-                            <img src="../Assets/images/Aloevera gel.jpg" alt="Aloe Vera Gel">
+                            <img loading="lazy" src="../Assets/images/Aloevera gel.jpg" alt="Aloe Vera Gel">
                         </td>
                         <td>
                             <ul>
                                 <li>High Blood Pressure</li>
                                 <li>Diabetes</li>
-                                <!-- ...remaining benefit bullets... -->
                             </ul>
                         </td>
                         <td><span class="product-price"><b>R583,92</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Aloe Berry Nectar (1L)</b></span></td>
                         <td>
-                            <img src="../Assets/images/berry nector.jpg" alt="Aloe Berry Nectar">
+                            <img loading="lazy" src="../Assets/images/berry nector.jpg" alt="Aloe Berry Nectar">
                         </td>
                         <td>
                             <ul>
                                 <li>Healthy Digestive System</li>
-                                <!-- ...remaining benefit bullets... -->
                             </ul>
                         </td>
                         <td><span class="product-price"><b>R583,92</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Forever Aloe Peaches (1L)</b></span></td>
                         <td>
-                            <!-- NOTE: no image filename was given for this product in the
-                                 original file — update this src to the real file name -->
-                            <img src="../Assets/images/Forever Aloe Peaches.jpg" alt="Forever Aloe Peaches">
+                            <!-- TODO: confirm this file name matches the image saved in Assets/images -->
+                            <img loading="lazy" src="../Assets/images/Forever Aloe Peaches.jpg" alt="Forever Aloe Peaches">
                         </td>
                         <td>
                             <ul>
-                                <li>98% Pure Aloe Vera Gel</li>
-                                <li>Gentle on entire face and eye area</li>
-                                <li>Cleanses, soothes &amp; refreshes skin</li>
-                                <li>Used with Forever Mask Powder to create a "Botox" face mask</li>
+                                <!-- TODO: add the benefits from the product label / source [1] -->
+                                <li>Peach-flavoured aloe vera drink</li>
                             </ul>
                         </td>
                         <td><span class="product-price"><b>R366,28</b></span></td>
                     </tr>
-
+ 
+                </tbody>
                 </table>
             </div>
-
+ 
             <!-- ============================================= -->
             <!-- CATEGORY 2: Skincare & Anti-Aging              -->
             <!-- ============================================= -->
             <h3>Skincare &amp; Anti-Aging</h3>
             <div class="table-scroll">
                 <table class="product-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Product</th>
-                        <th>Benefits</th>
-                        <th>Price</th>
-                    </tr>
-
+                    <caption>Skincare &amp; Anti-Aging. Product details adapted from the manufacturer's product information <a class="cite" href="#ref-1">[1]</a>.</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Benefits</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+ 
                     <tr>
                         <td><span class="product-name"><b>Hydrating Serum</b></span></td>
                         <td>
-                            <img src="../Assets/images/Hydrating Serum.jpg" alt="Hydrating Serum">
+                            <img loading="lazy" src="../Assets/images/Hydrating Serum.jpg" alt="Hydrating Serum">
                         </td>
                         <td>
                             <ul>
@@ -135,11 +224,11 @@
                         </td>
                         <td><span class="product-price"><b>R775,99</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Forever Marine Collagen (30 sachets)</b></span></td>
                         <td>
-                            <img src="../Assets/images/Forever Marine Collagen (box of 30 Sachets).jpg" alt="Forever Marine Collagen">
+                            <img loading="lazy" src="../Assets/images/Forever Marine Collagen (box of 30 Sachets).jpg" alt="Forever Marine Collagen">
                         </td>
                         <td>
                             <ul>
@@ -151,11 +240,11 @@
                         </td>
                         <td><span class="product-price"><b>R1852,93</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Infinite Skin Care Kit</b></span></td>
                         <td>
-                            <img src="../Assets/images/Infinite Skin Care (ANTIAGING solution).jpg" alt="Infinite Skin Care Kit">
+                            <img loading="lazy" src="../Assets/images/Infinite Skin Care (ANTIAGING solution).jpg" alt="Infinite Skin Care Kit">
                         </td>
                         <td>
                             <ul>
@@ -166,11 +255,11 @@
                         </td>
                         <td><span class="product-price"><b>R3578,43</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Infinite By Forever Hydrating Cleanser</b></span></td>
                         <td>
-                            <img src="../Assets/images/Inifinite By Forever hydrating cleaner.jpg" alt="Infinite By Forever Hydrating Cleanser">
+                            <img loading="lazy" src="../Assets/images/Inifinite By Forever hydrating cleaner.jpg" alt="Infinite By Forever Hydrating Cleanser">
                         </td>
                         <td>
                             <ul>
@@ -182,11 +271,11 @@
                         </td>
                         <td><span class="product-price"><b>R594,02</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Infinite By Forever Firming Serum</b></span></td>
                         <td>
-                            <img src="../Assets/images/Infinite By Forever firming serum.jpg" alt="Infinite By Forever Firming Serum">
+                            <img loading="lazy" src="../Assets/images/Infinite By Forever firming serum.jpg" alt="Infinite By Forever Firming Serum">
                         </td>
                         <td>
                             <ul>
@@ -198,11 +287,12 @@
                         </td>
                         <td><span class="product-price"><b>R990,04</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Infinite By Forever Firming Complex</b></span></td>
                         <td>
-                            <img src="../Assets/images/Infinite By Forever firming serum.jpg" alt="Infinite By Forever Firming Complex">
+                            <!-- TODO: this is the same image as the Firming Serum above; replace with a photo of the Firming Complex -->
+                            <img loading="lazy" src="../Assets/images/Infinite By Forever firming serum.jpg" alt="Infinite By Forever Firming Complex">
                         </td>
                         <td>
                             <ul>
@@ -213,11 +303,11 @@
                         </td>
                         <td><span class="product-price"><b>R990,04</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Infinite By Forever Restoring Crème</b></span></td>
                         <td>
-                            <img src="../Assets/images/Inifinite by Forever restoring creme.jpg " alt="Infinite By Forever Restoring Crème">
+                            <img loading="lazy" src="../Assets/images/Inifinite by Forever restoring creme.jpg" alt="Infinite By Forever Restoring Crème">
                         </td>
                         <td>
                             <ul>
@@ -229,11 +319,11 @@
                         </td>
                         <td><span class="product-price"><b>R1108,71</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Logic by Forever Skin Care System</b></span></td>
                         <td>
-                            <img src="../Assets/images/Logic by Forever Skin Care System (NEW).jpg" alt="Logic by Forever Skin Care System">
+                            <img loading="lazy" src="../Assets/images/Logic by Forever Skin Care System (NEW).jpg" alt="Logic by Forever Skin Care System">
                         </td>
                         <td>
                             <ul>
@@ -245,11 +335,11 @@
                         </td>
                         <td><span class="product-price"><b>R1583,77</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Logic by Forever Aloe Gel Cleanser</b></span></td>
                         <td>
-                            <img src="../Assets/images/Logic by forever aloe gel cleasner.jpg " alt="Logic by Forever Aloe Gel Cleanser">
+                            <img loading="lazy" src="../Assets/images/Logic by forever aloe gel cleasner.jpg" alt="Logic by Forever Aloe Gel Cleanser">
                         </td>
                         <td>
                             <ul>
@@ -261,11 +351,11 @@
                         </td>
                         <td><span class="product-price"><b>R575,78</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Logic by Forever Balancing Aloe Essence</b></span></td>
                         <td>
-                            <img src="../Assets/images/Logic by Forever Balancing Aloe Essence.jpg" alt="Logic by Forever Balancing Aloe Essence">
+                            <img loading="lazy" src="../Assets/images/Logic by Forever Balancing Aloe Essence.jpg" alt="Logic by Forever Balancing Aloe Essence">
                         </td>
                         <td>
                             <ul>
@@ -277,11 +367,11 @@
                         </td>
                         <td><span class="product-price"><b>R552,76</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Logic by Forever Soothing Gel Moisturizer</b></span></td>
                         <td>
-                            <img src="../Assets/images/Logic by Forever Soothing Gel Moisturizer.jpg " alt="Logic by Forever Soothing Gel Moisturizer">
+                            <img loading="lazy" src="../Assets/images/Logic by Forever Soothing Gel Moisturizer.jpg" alt="Logic by Forever Soothing Gel Moisturizer">
                         </td>
                         <td>
                             <ul>
@@ -293,27 +383,32 @@
                         </td>
                         <td><span class="product-price"><b>R610,53</b></span></td>
                     </tr>
-
+ 
+                </tbody>
                 </table>
             </div>
-
+ 
             <!-- ============================================= -->
             <!-- CATEGORY 3: Personal Care                      -->
             <!-- ============================================= -->
             <h3>Personal Care</h3>
             <div class="table-scroll">
                 <table class="product-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Product</th>
-                        <th>Benefits</th>
-                        <th>Price</th>
-                    </tr>
-
+                    <caption>Personal Care. Product details adapted from the manufacturer's product information <a class="cite" href="#ref-1">[1]</a>.</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Benefits</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+ 
                     <tr>
                         <td><span class="product-name"><b>Aloe Lips</b></span></td>
                         <td>
-                            <img src="../Assets/images/Aloe Lips.jpg" alt="Aloe Lips">
+                            <img loading="lazy" src="../Assets/images/Aloe Lips.jpg" alt="Aloe Lips">
                         </td>
                         <td>
                             <ul>
@@ -326,11 +421,11 @@
                         </td>
                         <td><span class="product-price"><b>R80,79</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Forever Bright Toothgel</b></span></td>
                         <td>
-                            <img src="../Assets/images/Forever Bright Toothgel.jpg" alt="Forever Bright Toothgel">
+                            <img loading="lazy" src="../Assets/images/Forever Bright Toothgel.jpg" alt="Forever Bright Toothgel">
                         </td>
                         <td>
                             <ul>
@@ -345,11 +440,11 @@
                         </td>
                         <td><span class="product-price"><b>R178,24</b></span></td>
                     </tr>
-
+ 
                     <tr>
                         <td><span class="product-name"><b>Aloe Ever-Shield Deodorant Stick</b></span></td>
                         <td>
-                            <img src="../Assets/images/Aloe Ever-Shield.jpg" alt="Aloe Ever-Shield Deodorant Stick">
+                            <img loading="lazy" src="../Assets/images/Aloe Ever-Shield.jpg" alt="Aloe Ever-Shield Deodorant Stick">
                         </td>
                         <td>
                             <ul>
@@ -362,17 +457,76 @@
                         </td>
                         <td><span class="product-price"><b>R166,83</b></span></td>
                     </tr>
-
+ 
+                </tbody>
                 </table>
             </div>
-
+ 
         </section>
-
+ 
+        <!-- References: IEEE style, numbered in the order they are first cited on this page -->
+        <section class="references" aria-labelledby="refs-heading">
+            <h2 id="refs-heading">References</h2>
+            <ol class="reference-list">
+                <li id="ref-1">Forever Living Products, "Forever Living Products." Accessed: Nov. 2, 2026. [Online]. Available: https://www.foreverliving.com</li>
+                <li id="ref-2">MDN Contributors, "String.prototype.includes()," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes</li>
+                <li id="ref-3">MDN Contributors, "Date," MDN Web Docs. Accessed: Nov. 2, 2026. [Online]. Available: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date</li>
+            </ol>
+            <p class="references-note">References [2] and [3] are cited in the code comments of this page.</p>
+        </section>
+ 
     </main>
-
+ 
     <footer>
         <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./enquiry.html">Send an enquiry</a></p>
+        <p>Local time: <span id="time"></span></p>
     </footer>
-
+ 
+    <script>
+        // ------------------------------------------------------------
+        // Product search: hides table rows that do not match the text typed.
+        // Uses String.prototype.includes() [2].
+        // ------------------------------------------------------------
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('productSearch');
+        const noResults = document.getElementById('noResults');
+        const productRows = document.querySelectorAll('.product-table tbody tr');
+ 
+        function filterProducts() {
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleRows = 0;
+ 
+            productRows.forEach(function (row) {
+                const matches = row.textContent.toLowerCase().includes(query);
+                row.hidden = !matches;          // hide rows that do not match
+                if (matches) { visibleRows++; }
+            });
+ 
+            // Show a friendly message when nothing matches
+            noResults.hidden = visibleRows !== 0;
+        }
+ 
+        searchInput.addEventListener('input', filterProducts);
+        searchForm.addEventListener('submit', function (event) {
+            event.preventDefault();             // the page filters live, so no reload is needed
+            filterProducts();
+        });
+ 
+        // ------------------------------------------------------------
+        // Live clock (dynamic content), built on the Date object [3]
+        // ------------------------------------------------------------
+        function displayTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');     // padStart adds a leading zero
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+        displayTime();                          // show the time straight away
+        setInterval(displayTime, 1000);         // then update every second
+    </script>
+ 
 </body>
 </html>
+ 
+
