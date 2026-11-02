@@ -246,7 +246,41 @@
                                                                 contactForm.message.value); 
  
         displayTime();                  // show the time straight away
-        setInterval(displayTime, 1000); // then update it every second
+        setInterval(displayTime, 1000); // then update it every second 
+
+        // ------------------------------------------------------------
+// Team photos: click a circle to see a larger version.
+// Uses the <dialog> element and its showModal() method [3].
+// ------------------------------------------------------------
+const photoDialog = document.getElementById('photoDialog');
+const photoDialogImg = document.getElementById('photoDialogImg');
+const photoDialogCaption = document.getElementById('photoDialogCaption');
+const photoDialogClose = document.getElementById('photoDialogClose');
+const teamButtons = document.querySelectorAll('.team-photo-btn');
+
+teamButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        const photo = button.querySelector('.team-photo');
+        const caption = button.closest('.team-figure').querySelector('figcaption');
+
+        photoDialogImg.src = photo.src;
+        photoDialogImg.alt = photo.alt;
+        photoDialogCaption.textContent = caption.textContent;   // name + role
+
+        photoDialog.showModal();        // the Esc key closes it automatically
+    });
+});
+
+photoDialogClose.addEventListener('click', function () {
+    photoDialog.close();
+});
+
+// Clicking the dark area around the pop-up also closes it
+photoDialog.addEventListener('click', function (event) {
+    if (event.target === photoDialog) {
+        photoDialog.close();
+    }
+});
     </script>
  
 </body>

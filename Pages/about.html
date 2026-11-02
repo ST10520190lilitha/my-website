@@ -76,9 +76,56 @@
                 "Every product we offer is chosen with one goal in mind — helping you feel your best, naturally."
             </div>
         </section>
+<section>
+            <h2>Meet the Team</h2>
+            <p>
+                Our team is dedicated to providing you with the best products and service. We are passionate about
+                natural wellness and are here to support you on your journey to better health.
+            </p>
+        </section> 
 
-       
+        <!-- Team photos: cropped into circles with CSS, enlarged with JavaScript -->
+<section class="team-gallery" aria-labelledby="team-heading">
+    <h2 id="team-heading">Meet the Team</h2>
 
+    <div class="team-photos">
+        <figure class="team-figure">
+            <button type="button" class="team-photo-btn" aria-label="Enlarge photo of Sindi Jubati">
+                <img class="team-photo" loading="lazy"
+                     src="../Assets/images/Sindi.jpg"
+                     alt="Forever Living business owner Sindi Jubati">
+            </button>
+            <figcaption>Sindi Jubati<span>Business owner</span></figcaption>
+        </figure>
+
+        <figure class="team-figure">
+            <button type="button" class="team-photo-btn" aria-label="Enlarge photo of Sivile Jubati">
+                <img class="team-photo" loading="lazy"
+                     src="../Assets/images/sivile.jpg"
+                     alt="Co-owner Sivile Jubati">
+            </button>
+            <figcaption>Sivile Jubati<span>Co-owner</span></figcaption>
+        </figure>
+
+        <figure class="team-figure">
+            <button type="button" class="team-photo-btn" aria-label="Enlarge photo of Lilitha Jubati">
+                <img class="team-photo" loading="lazy"
+                     src="../Assets/images/Lilitha.jpg"
+                     alt="Website developer Lilitha">
+            </button>
+            <figcaption>Lilitha Jubati<span>Website developer</span></figcaption>
+        </figure>
+    </div>
+
+    <!-- Pop-up viewer: the <dialog> element handles focus and the Esc key [3] -->
+    <dialog id="photoDialog" class="photo-dialog" aria-label="Enlarged team photo">
+        <img id="photoDialogImg" class="photo-dialog-img" src="" alt="">
+        <p id="photoDialogCaption" class="photo-dialog-caption"></p>
+        <button type="button" id="photoDialogClose" class="photo-dialog-close">Close</button>
+    </dialog>
+</section>
+
+        
     </main>
 
     <!-- Site footer: copyright + quick link to contact page + live clock -->

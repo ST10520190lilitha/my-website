@@ -474,6 +474,29 @@ Products · HTML
             </ol>
             <p class="references-note">References [2] and [3] are cited in the code comments of this page.</p>
         </section>
+
+        <meta name="description" content="Browse Forever Living aloe drinks, skincare and personal care products with prices and benefits.">
+<meta name="keywords" content="Forever Living, aloe vera, aloe drinks, skincare, anti-aging, personal care, Gqeberha">
+<meta name="author" content="Sindi Jubati">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph: controls how the page looks when shared on social media -->
+<meta property="og:title" content="Products — Forever Living by Sindi Jubati">
+<meta property="og:description" content="Aloe drinks, skincare and personal care products with prices.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="Assets/images/forever-living-logo_8268.png">
+
+<!-- TODO: replace with the real web address once the site is hosted -->
+<!-- <link rel="canonical" href="https://www.your-domain.co.za/Pages/products.html"> -->
+
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('productSearch');
+const noResults = document.getElementById('noResults');
+const resultCount = document.getElementById('resultCount');
+const productRows = document.querySelectorAll('.product-table tbody tr');
+const categoryTables = document.querySelectorAll('.table-scroll');
+
+
  
     </main>
  
@@ -481,51 +504,88 @@ Products · HTML
         <p>&copy; 2026 Forever Living by Sindi Jubati. All rights reserved. | <a href="./enquiry.html">Send an enquiry</a></p>
         <p>Local time: <span id="time"></span></p>
     </footer>
- 
-    <script>
-        // ------------------------------------------------------------
+
+    <script> 
+
+       
+                // ------------------------------------------------------------
         // Product search: hides table rows that do not match the text typed.
         // Uses String.prototype.includes() [2].
+        // The search text is also stored in the page address (?q=...) using
+        // URLSearchParams [4], so a search can be bookmarked, shared and re-opened.
         // ------------------------------------------------------------
         const searchForm = document.getElementById('searchForm');
         const searchInput = document.getElementById('productSearch');
         const noResults = document.getElementById('noResults');
+        const resultCount = document.getElementById('resultCount');
         const productRows = document.querySelectorAll('.product-table tbody tr');
- 
+        const categoryTables = document.querySelectorAll('.table-scroll');
+
         function filterProducts() {
             const query = searchInput.value.trim().toLowerCase();
             let visibleRows = 0;
- 
+
             productRows.forEach(function (row) {
                 const matches = row.textContent.toLowerCase().includes(query);
-                row.hidden = !matches;          // hide rows that do not match
+                row.hidden = !matches;              // hide rows that do not match
                 if (matches) { visibleRows++; }
             });
- 
-            // Show a friendly message when nothing matches
+
+            // Hide a whole category (its table and its <h3> heading) when none of its rows match
+            categoryTables.forEach(function (tableWrapper) {
+                const hasVisibleRow = tableWrapper.querySelector('tbody tr:not([hidden])') !== null;
+                tableWrapper.hidden = !hasVisibleRow;
+                const heading = tableWrapper.previousElementSibling;
+                if (heading && heading.tagName === 'H3') {
+                    heading.hidden = !hasVisibleRow;
+                }
+            });
+
+            // Friendly messages: "no results" or a count of what was found
             noResults.hidden = visibleRows !== 0;
+            if (query === '') {
+                resultCount.textContent = '';
+            } else if (visibleRows > 0) {
+                resultCount.textContent = visibleRows + (visibleRows === 1 ? ' product found.' : ' products found.');
+            } else {
+                resultCount.textContent = '';
+            }
+
+            updateAddress(query);
         }
- 
+
+        // Keeps the address bar in step with the search, e.g. products.html?q=aloe [4]
+        function updateAddress(query) {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                if (query === '') {
+                    params.delete('q');
+                } else {
+                    params.set('q', query);
+                }
+                const newQuery = params.toString();
+                const newUrl = window.location.pathname + (newQuery ? '?' + newQuery : '');
+                history.replaceState(null, '', newUrl);   // no page reload, no extra history entries
+            } catch (error) {
+                // Some browsers block address changes on local files; the search still works
+            }
+        }
+
         searchInput.addEventListener('input', filterProducts);
         searchForm.addEventListener('submit', function (event) {
-            event.preventDefault();             // the page filters live, so no reload is needed
+            event.preventDefault();                 // the page filters live, so no reload is needed
             filterProducts();
         });
- 
-        // ------------------------------------------------------------
-        // Live clock (dynamic content), built on the Date object [3]
-        // ------------------------------------------------------------
-        function displayTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');     // padStart adds a leading zero
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('time').textContent = hours + ':' + minutes + ':' + seconds;
+
+        // When the page opens with ?q=something, run that search straight away
+        const startingQuery = new URLSearchParams(window.location.search).get('q');
+        if (startingQuery) {
+            searchInput.value = startingQuery;
+            filterProducts();
         }
-        displayTime();                          // show the time straight away
-        setInterval(displayTime, 1000);         // then update every second
     </script>
  
+ io
 </body>
 </html>
  
